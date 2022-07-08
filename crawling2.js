@@ -18,8 +18,8 @@ const parsing = async () => {
         await driver.sleep(1000);
         const html = await driver.getPageSource();
         const $ = cheerio.load(html);
-        const $courseList = $(".tdb_module_loop");
-        $courseList.each((idx,node) => {
+        const $htmlList = $(".tdb_module_loop");
+        $htmlList.each((idx,node) => {
             const gettitle = $(node).find(".entry-title").text().replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
             const getcontent = $(node).find(".td-excerpt ").text().replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
             const gettime = $(node).find('time').text();

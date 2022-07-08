@@ -23,8 +23,8 @@ const getHTML2 = async() => {
 const parsing = async () => {
     const html = await getHTML();
     const $ = cheerio.load(html.data);
-    const $courseList = $(".td_module_wrap");
-    $courseList.each((idx,node) => {
+    const $htmlList = $(".td_module_wrap");
+    $htmlList.each((idx,node) => {
         const gettitle = $(node).find(".entry-title").text().replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
         const getcontent = $(node).find(".td-excerpt ").text().replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
         const gettime = $(node).find('time').text();
@@ -41,8 +41,8 @@ const parsing = async () => {
 const parsing2 = async () => {
     const html = await getHTML2();
     const $ = cheerio.load(html.data);
-    const $courseList = $(".td_module_wrap");
-    $courseList.each((idx,node) => {
+    const $htmlList = $(".td_module_wrap");
+    $htmlList.each((idx,node) => {
         const gettitle = $(node).find(".entry-title").text().replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
         const getcontent = $(node).find(".td-excerpt ").text().replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
         const gettime = $(node).find('time').text();
