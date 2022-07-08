@@ -8,7 +8,7 @@
 npm install cheerio, axios, moment
 ```
 
-request, cheerio를 사용한 웹 크롤러
+request, cheerio를 사용한 웹 크롤러 \n
 axios로 http 비동기 통신 라이브러리
 moment 라이브러리 사용 - format으로 날짜 형식 변경
 
