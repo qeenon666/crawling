@@ -5,13 +5,13 @@
 ## crawling.js
 
 ```
-npm install cheerio, axios, moment
+npm install cheerio, axios, dayjs
 ```
 
 axios, cheerio를 사용한 웹 크롤링 <br/>
 axios로 http 비동기 통신 라이브러리 <br/>
 cheerio 문자열로 구성된 html 코드 분석 후 document 중 필요한 정보만 가져옴, jquery 시용가능 <br/>
-moment 라이브러리 사용 - format으로 날짜 형식 변경<br/>
+dayjs 라이브러리 사용 - format으로 날짜 형식 변경<br/>
 웹페이지를 열지 않고 통신만 보내서 기사내용 저장
 
 ![1](https://user-images.githubusercontent.com/85939078/177919325-2eb2761c-ee1f-4fb1-be7f-bbf43f997116.PNG)
@@ -19,7 +19,7 @@ moment 라이브러리 사용 - format으로 날짜 형식 변경<br/>
 ## crawling2.js
 
 ```
-npm install cheerio, selenium, moment
+npm install cheerio, selenium, dayjs
 https://chromedriver.chromium.org/ download
 ```
 selenium, cheerio를 사용한 웹 크롤러
