@@ -1,6 +1,6 @@
 const cheerio = require("cheerio");
 const fs = require("fs");
-const moment = require("moment");
+const dayjs = require("dayjs");
 const {Builder, By, Key} = require("selenium-webdriver");
 
 const rink = ["https://mbaranking.com","https://edutimes.com"]
@@ -23,7 +23,8 @@ const parsing = async () => {
             const gettitle = $(node).find(".entry-title").text().replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
             const getcontent = $(node).find(".td-excerpt ").text().replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
             const gettime = $(node).find('time').text();
-            const settime = moment(gettime, "").format("YYYYMMDD");
+            const settime = dayjs(gettime).format('YYYYMMDD');
+            
             fs.writeFile(`${settime+"-"+gettitle}.txt`,gettitle+"\n"+getcontent,function(err){
                 if (err === null) {
                     console.log('success');

@@ -1,7 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
-const moment = require("moment");
+const dayjs = require("dayjs");
 
 const url = "https://mbaranking.com";
 const url2 = "https://edutimes.com";
@@ -28,7 +28,7 @@ const parsing = async () => {
         const gettitle = $(node).find(".entry-title").text().replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
         const getcontent = $(node).find(".td-excerpt ").text().replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
         const gettime = $(node).find('time').text();
-        const settime = moment(gettime).format("YYYYMMDD");
+        const settime = dayjs(gettime).format("YYYYMMDD");
         fs.writeFile(`${settime+"-"+gettitle}.txt`,gettitle+"\n"+getcontent,function(err){
             if (err === null) {
                 console.log('success');
@@ -43,10 +43,10 @@ const parsing2 = async () => {
     const $ = cheerio.load(html.data);
     const $htmlList = $(".td_module_wrap");
     $htmlList.each((idx,node) => {
-        const gettitle = $(node).find(".entry-title").text().replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
-        const getcontent = $(node).find(".td-excerpt ").text().replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
+        const gettitle = $(node).find(".entry-title").text();
+        const getcontent = $(node).find(".td-excerpt ").text();
         const gettime = $(node).find('time').text();
-        const settime = moment(gettime).format("YYYYMMDD");
+        const settime = dayjs(gettime).format("YYYYMMDD");
         fs.writeFile(`${settime+"-"+gettitle}.txt`,gettitle+"\n"+getcontent,function(err){
             if (err === null) {
                 console.log('success');
